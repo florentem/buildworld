@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florentem Links</title>
+    <title>Build World</title>
     <style>
         body {
             margin: 0;
@@ -27,25 +27,30 @@
             font-size: 2em;
         }
 
-        .links {
+        .info,
+        .utilities,
+        .contacts {
             text-align: center;
             margin-top: 50px;
         }
 
-        button {
+        .divider {
+            border-top: 2px solid white;
+            margin: 20px 0;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
             background-color: #333;
             color: white;
             font-weight: bold;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 10px;
+            font-size: 1em;
             border: 2px solid #111;
-            border-radius: 10px;
-            margin: 10px 0;
+            border-radius: 5px;
             cursor: pointer;
-            display: block;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         @media (max-width: 600px) {
@@ -58,27 +63,41 @@
 
 <body>
 
+    <button class="home-button">&#8962;</button>
+
     <header>
-        <h1>Links</h1>
+        <h1>Build World</h1>
     </header>
 
-    <div class="links">
-        <button onclick="window.location.href='https://t.me/coowersyy'">Telegram</button>
-        <button onclick="window.location.href='https://www.twitch.tv/florentem_'">Twitch</button>
-        <button onclick="copyToClipboard('нось#4004')">Discord</button>
-        <button onclick="window.location.href='https://www.donationalerts.com/r/florentem'">Donate</button>
+    <div class="info">
+        <p>Информация</p>
+        <p>ip: build.20tps.ru</p>
+        <p>(Если подключится не выходит, используйте прямой IP: 135.181.126.148:25672)</p>
+        <p>Рестарты: 23:05, 07:05 UTC+3</p>
+    </div>
+    <div class="divider"></div>
+
+    <div class="utilities">
+        <p>Утилиты</p>
+        <p>/ri rename / lore - переименование предмета в руке</p>
+        <p>/trigger if_invisible (или клик ПКМ по рамке с пустой рукой и шифтом) - делает рамку невидимой</p>
+        <p>/tpa - отправляет запрос на телепортацию, используйте эту команду вместо /tp</p>
+        <p>/invsort sortme / middleclicksort - сортировка инвентаря или при клике колесиком мыши по пустому слоту</p>
+        <p>/head - интерфейс мода для получения головы игрока</p>
+        <p>Мод для редактирования армор-стандов: возьмите в руку кремень и кликните с шифтом по стойке для брони</p>
+        <p>Axiom и WorldEdit также установлены</p>
+    </div>
+    <div class="divider"></div>
+
+    <div class="contacts">
+        <p>Контакты</p>
+        <p>Для вайтлиста и прочих вопросов писать в Discord: нось#4004</p>
     </div>
 
     <script>
-        function copyToClipboard(text) {
-            const tempInput = document.createElement('input');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            alert('Copied to clipboard: ' + text);
-        }
+        document.querySelector('.home-button').addEventListener('click', function () {
+            window.location.href = 'https://florentem.github.io';
+        });
     </script>
 </body>
 
