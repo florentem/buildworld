@@ -53,6 +53,19 @@
             cursor: pointer;
         }
 
+        .status {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .online {
+            color: green;
+        }
+
+        .offline {
+            color: red;
+        }
+
         @media (max-width: 600px) {
             header {
                 font-size: 1.5em;
@@ -67,10 +80,11 @@
 
     <header>
         <h1>Build World</h1>
+        <div class="status" id="serverStatus"></div>
     </header>
 
     <div class="info">
-        <p>Информация</p>
+<p>Информация</p>
         <p>ip: build.20tps.ru</p>
         <p>(Если подключится не выходит, используйте прямой IP: 135.181.126.148:25672)</p>
         <p>Рестарты: 23:05, 07:05 UTC+3</p>
@@ -78,7 +92,7 @@
     <div class="divider"></div>
 
     <div class="utilities">
-        <p>Утилиты</p>
+<p>Утилиты</p>
         <p>/ri rename / lore - переименование предмета в руке</p>
         <p>/trigger if_invisible (или клик ПКМ по рамке с пустой рукой и шифтом) - делает рамку невидимой</p>
         <p>/tpa - отправляет запрос на телепортацию, используйте эту команду вместо /tp</p>
@@ -90,7 +104,7 @@
     <div class="divider"></div>
 
     <div class="contacts">
-        <p>Контакты</p>
+       <p>Контакты</p>
         <p>Для вайтлиста и прочих вопросов писать в Discord: нось#4004</p>
     </div>
 
@@ -98,6 +112,16 @@
         document.querySelector('.home-button').addEventListener('click', function () {
             window.location.href = 'https://florentem.github.io';
         });
+
+        // Fetch server status from the API
+        fetch('https://api.mcstatus.io/v2/status/java/build.20tps.ru')
+            .then(response => response.json())
+            .then(data => {
+                const serverStatus = document.getElementById('serverStatus');
+                serverStatus.textContent = data.online ? 'Online' : 'Offline';
+                serverStatus.className = data.online ? 'online' : 'offline';
+            })
+            .catch(error => console.error('Error fetching server status:', error));
     </script>
 </body>
 
